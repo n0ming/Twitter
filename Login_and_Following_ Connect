@@ -1,0 +1,94 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
+import random, time, pyperclip
+
+# 브라우저 객체 호출
+browser = webdriver.Chrome()
+
+# 브라우저를 주소창을 통해 로그인 페이지 접근
+browser.get("https://twitter.com/snleeintern/following")
+
+# 브라우저 묵시적 대기
+browser.implicitly_wait(5)
+
+# 랜덤시간 대기
+time.sleep(random.randint(3, 5))
+
+# 웹 페이지에서 id, pw 입력창 찾고 kisia 값 입력 후 랜덤시간 대기
+id_ = browser.find_element(By.XPATH, '//input[@type="text"]')
+pyperclip.copy("snleeintern")
+id_.send_keys(Keys.CONTROL, 'v')
+time.sleep(random.randint(1, 2))
+
+btn_click = browser.find_element(By.CLASS_NAME, "css-18t94o4.css-1dbjc4n.r-sdzlij.r-1phboty.r-rs99b7.r-ywje51.r-usiww2.r-2yi16.r-1qi8awa.r-1ny4l3l.r-ymttw5.r-o7ynqc.r-6416eg.r-lrvibr.r-13qz1uu")
+btn_click.click()
+print("a")
+
+pw = browser.find_element(By.XPATH, '//input[@type="password"]')
+pyperclip.copy("20111004")
+pw.send_keys(Keys.CONTROL, 'v')
+time.sleep(random.randint(1, 2))
+
+# 로그인 버튼을 xpath로 찾고 클릭
+login_button = browser.find_element(By.XPATH, '//*[@data-testid="LoginForm_Login_Button"]')
+login_button.click()
+
+# 팔로잉 계정 목록을 가져오기 위해 translateY()를 사용하여 페이지를 아래로 스크롤
+def scroll_to_bottom():
+    SCROLL_PAUSE_TIME = 1
+    last_height = browser.execute_script("return document.body.scrollHeight")
+    while True:
+        browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(SCROLL_PAUSE_TIME)
+        new_height = browser.execute_script("return document.body.scrollHeight")
+        if new_height == last_height:
+            break
+        last_height = new_height
+
+scroll_to_bottom()
+
+# 팔로잉 계정 목록을 가져오기 위해 translateY()를 사용하여 페이지를 아래로 스크롤
+def scroll_to_bottom():
+    SCROLL_PAUSE_TIME = 1
+    last_height = browser.execute_script("return document.body.scrollHeight")
+    while True:
+        browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(SCROLL_PAUSE_TIME)
+        new_height = browser.execute_script("return document.body.scrollHeight")
+        if new_height == last_height:
+            break
+        last_height = new_height
+
+scroll_to_bottom()
+
+# 팔로잉 계정의 리스트를 가져오기
+following_list = browser.find_elements(By.XPATH, '//div[@data-testid="UserCell"]')
+
+# Loop through each following account
+for idx, _ in enumerate(following_list):
+    # Re-fetch the following_list after scrolling to avoid StaleElementReferenceException
+    following_list = browser.find_elements(By.XPATH, '//div[@data-testid="UserCell"]')
+
+    # Click on the current following account using ActionChains
+    following_account = following_list[idx]
+    ActionChains(browser).move_to_element(following_account).click().perform()
+
+    # Wait for the new page to load (You may adjust the wait time as needed)
+    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@data-testid="UserProfileHeader_Items"]')))
+    time.sleep(2)
+
+    # Do your desired actions here
+    # For example, you can retrieve information or perform tasks on this page
+
+    # Go back to the previous page (list of following accounts)
+    browser.execute_script("window.history.go(-1)")
+
+    # Random wait before clicking the next following account
+    time.sleep(random.uniform(2, 4))
+
+
+browser.close()
