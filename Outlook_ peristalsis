@@ -1,0 +1,37 @@
+import win32com.client
+import re
+# test라는 outlook COM 객체 생성(Dispatch)
+# 생성한 test 객체를 통해 Outlook을 제어할 수 있다.
+test = win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI")
+
+#6 : 받은 편지함(inbox folder)를 의미함.
+root_folder = test.Folders.Item(1)
+inboxfolder = root_folder.Folders['DDW']
+messages = inboxfolder.Items
+
+#받은편지함에 있는 메일 개수를 입력받는 변수 : msg_count
+msg_count = messages.count
+print("받은편지함 메시지 수 : " + str(msg_count) + "건")
+
+#출력을 위한 index 번호
+# 받은편지함 messgae를 각각 루프문을 돌아 필요한 내용 파싱
+for ms in messages:
+    if ms.UnRead:
+        #print(str(i) + "번째 메일의 발신인 : " + ms.SenderName)
+        #print(str(i) + "번째 메일의 수신인 : " + ms.To)
+        #print(str(i) + "번째 메일의 제목 : " + ms.Subject)
+        print(str(i) + "번째 메일의 받은시간 : " + str(ms.ReceivedTime))
+        #print(str(i) + "번째 메일의 내부내용 : " + ms.Body)
+
+        buf_url='aaa'
+        if "https://twitter.com" in ms.Body:
+            # URL 추출을 위한 정규 표현식 패턴
+            url_pattern = r"(https?://twitter\.com\S+)"
+            urls = re.findall(url_pattern, ms.Body)
+
+            # 추출한 URL 출력
+            for url in urls:
+                print("URL: " + url.replace(')에',''))
+                break
+        print('\n')
+        i = i+1
