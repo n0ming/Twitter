@@ -185,14 +185,14 @@ def init(email,password,content, command,command2):
 
 @app.route('/')
 def index():
-    with open('aabb.md', 'r', encoding='utf-8') as file:
+    with open('show.md', 'r', encoding='utf-8') as file:
         markdown_content = file.read()
     return render_template('index.html', markdown_content=Markup(markdown_content))
 
 
 if __name__ == "__main__":
     content = []
-    data = pd.read_csv('twitter_8_9.csv')
+    data = pd.read_csv('tweet.csv')
     content.extend(data['Origin_Content'])
     command1 =f"다음 주어질 {len(content)}개의 모든 내용들은 앞에 [1][2][3]과 같이 순서가 맺겨져있어. 해당 순서 다음에 있는 내용에 대해 하나도 빠짐없이 한문장짜리 짧은 한국어요약 제목을 선정해서 해당 제목앞에 1. 2. 3. 4. .. 순서를 나열해 적어줘. 이때 주어진 문장이 매우 짧거나 빈문장일 경우에는 한국어 번역한 내용을 제목으로 선정 진행해줘. 당연하게도 각각의 제목앞에 숫자를 매기는거니까 딱 결과도 {len(content)}개가 있어야해"
     command2= f"다음 주어질 {len(content)}개의 모든 내용들은 앞에 [1][2][3]과 같이 순서가 맺겨져있어. 해당 번호와 그 다음번호 사이에 있는 내용들에 대해 하나도 빠짐없이 한국어로 이해하기 쉽게 구체적으로 완전한 문장들로 만들어줘. 이때 여러문장이면 줄바꾸지말고 한줄로 나열해줘. 모든 문장끝에는 .을 붙여주고 결과로는 정리된 문장만 나열해줘"
@@ -200,7 +200,7 @@ if __name__ == "__main__":
 
     check =False
 
-    with open('aabb.md', 'w', encoding='utf-8') as file:
+    with open('show.md', 'w', encoding='utf-8') as file:
         for a in range(len(all_text2)):
             row = data.iloc[a]  
             if check:
