@@ -95,7 +95,7 @@ def get_answer():
     li_elements = last_element.find_elements(By.TAG_NAME, 'li')
     answer = [element.text for element in li_elements]
     return answer
-
+# chatgpt 로그인 및 접속 후 comand1,2 명령어 답변 수집
 def init(email,password,content, command,command2):
     driver.get('https://chat.openai.com/')
     chatgpt_login_btn = (By.XPATH, '//button[div[text()="Log in"]]')
