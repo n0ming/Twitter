@@ -1,4 +1,4 @@
-Outlook_TweetCsv.py를 통해 얻음
+**Outlook_TweetCsv.py를 통해 얻음**
 >> 아래는 three.csv에 해당하는 샘플 데이터
 AttachCheck,Profile,Url,Date,Origin_Content,Translated_Content,ImageUrl,AttachTweet,AttachUrl
 X,BleepingComputer,https://twitter.com/BleepinComputer/status/1693634279014633788?t=SBkt_9D5BzHrz8azpbFIVw&s=03),2023/8/21,Japanese watchmaker Seiko breached by BlackCat ransomware gang - @billtoulas,일본 시계 제조업체 세이코가 블랙캣 랜섬웨어 갱단에 의해 침입했다 - @billtoulas,,,https://www.bleepingcomputer.com/news/security/japanese-watchmaker-seiko-breached-by-blackcat-ransomware-gang/
@@ -8,5 +8,5 @@ X,Dominic Alvieri,https://twitter.com/AlvieriD/status/1693687568036987264?t=SaaT
 O,Dominic Alvieri,https://twitter.com/AlvieriD/status/1693587745283678591,2023/8/21,Clop Ransomware is currently posting new torrents including one on the University of Georgia. @universityofga,클롭 랜섬웨어는 현재 조지아 대학에 새로운 급류를 게시하고 있다. @유니버시티 오브가,https://pbs.twimg.com/media/F4DVE_fWkAACSpI?format=webp&name=small	,,
 
 
-csv_to_md_v.3.py를 통해 얻은 사이트 결과 사진
+**csv_to_md_v.3.py를 통해 얻은 사이트 결과 사진**
 ![image](https://github.com/n0ming/Twitter/assets/132183887/46ed6d7b-0d56-42dd-8c6b-7b3cc367e9fd)
