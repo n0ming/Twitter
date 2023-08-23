@@ -5,4 +5,4 @@
 
 <h3>Oulook Version Explain</h3>
 
-![docs ahnlab com_pages_viewpage action_pageId=675309750 src=contextnavpagetreemode](https://github.com/n0ming/Twitter/assets/132183887/fb3789f1-223e-4aa5-aca2-8a091c650d46)
+![docs ahnlab com_pages_viewpage action_pageId=675309750 src=contextnavpagetreemode (1)](https://github.com/n0ming/Twitter/assets/132183887/90a3ff71-47b9-496d-ab7c-4338212b72af)
